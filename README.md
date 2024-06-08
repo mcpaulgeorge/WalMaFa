@@ -1,14 +1,8 @@
 
-## Ultra-High-Definition Low-Light Image Enhancement: A Benchmark and Transformer-Based Method (AAAI 2023 -- Oral)
+## Wavelet-based Mamba with Fourier Adjustment for Low-light Image Enhancement(WalMaFa)
 
 
-[Tao Wang](https://scholar.google.com/citations?user=TsDufoMAAAAJ&hl=en), [Kaihao Zhang](https://scholar.google.com/citations?user=eqwDXdMAAAAJ&hl=en), [Tianrun Shen](https://scholar.google.com/citations?hl=en&user=BKCgZL4AAAAJ), [Wenhan Luo](https://scholar.google.com/citations?user=g20Q12MAAAAJ&hl=en), [Bjorn Stenger](https://scholar.google.com/citations?user=plhjgHUAAAAJ&hl=en), [Tong Lu](https://cs.nju.edu.cn/lutong/index.htm)
-
-[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2212.11548.pdf)
-[![supplement](https://img.shields.io/badge/Supplementary-Material-red)](https://arxiv.org/pdf/2212.11548.pdf)
-[![video](https://img.shields.io/badge/Video-Presentation-F9D371)](https://arxiv.org/pdf/2212.11548.pdf)
-[![slides](https://img.shields.io/badge/Presentation-Slides-B762C1)](https://arxiv.org/pdf/2212.11548.pdf)
-[![Summary](https://img.shields.io/badge/Summary-Slide-87CEEB)](https://arxiv.org/pdf/2212.11548.pdf)
+Junhao Tan, Songwen Pei
 
 >**Abstract:** As the quality of optical sensors improves, there is a need for processing large-scale images. In particular, the ability of devices to capture ultra-high definition (UHD) images and video places new demands on the image processing pipeline. 
 >In this paper, we consider the task of low-light image enhancement (LLIE) and introduce a large-scale database consisting of images at 4K and 8K resolution. We conduct systematic benchmarking studies and provide a comparison of current LLIE 
@@ -24,9 +18,9 @@
 - **Jun 8, 2024:** Homepage is released!
 
 
-## Wavelet-based Mamba with Fourier Adjustment for Low-light Image Enhancement(WalMaFa)
+
 ![](figures/cover.png)
-Frequency information (e.g., Discrete Wavelet Transform and Fast Fourier Transform) has been widely applied to solve the issue of Low-Light Image Enhancement (LLIE). However, existing frequency-based models primarily operate in the simple wavelet or Fourier space of images, which lacks utilization of valid global and local information in each space. We found that wavelet frequency information is more sensitive to global brightness due to its low-frequency component while Fourier frequency information is more sensitive to local details due to its phase component. In order to achieve superior preliminary brightness enhancement by optimally integrating spatial channel information with low-frequency components in the wavelet transform, we introduce channel-wise Mamba, which compensates for the long-range dependencies of CNNs and has lower complexity compared to Diffusion and Transformer models. So in this work, we propose a novel Wavelet-based Mamba with Fourier Adjustment model called **WalMaFa**, consisting of a Wavelet-based Mamba Block (WMB) and a Fast Fourier Adjustment Block (FFAB). We employ an Encoder-Latent-Decoder structure to accomplish the end-to-end transformation. Specifically, WMB is adopted in the Encoder and Decoder to enhance global brightness while FFAB is adopted in the Latent to fine-tune local texture details and alleviate ambiguity. Extensive experiments demonstrate that our proposed WalMaFa achieves state-of-the-art performance with fewer computational resources and faster speed.
+
 ## Network Architecture
 ![](figures/network.png)
 
