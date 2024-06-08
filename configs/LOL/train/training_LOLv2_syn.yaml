@@ -1,0 +1,25 @@
+# Training configuration
+GPU: [0,1,2]
+
+VERBOSE: False
+
+MODEL:
+  MODE: 'Walmafa_LOL_v2_syn'
+
+# Optimization arguments.
+OPTIM:
+  BATCH: 20
+  EPOCHS: 6000
+#  EPOCH_DECAY: [10]
+  LR_INITIAL: 0.0008
+  LR_MIN: 1e-6
+  BETA1: 0.9
+
+TRAINING:
+  VAL_AFTER_EVERY: 1
+  RESUME:   False
+  TRAIN_PS: 128
+  VAL_PS: 128
+  TRAIN_DIR: './datasets/LOLv2/Synthetic/Train'       # path to training data
+  VAL_DIR: './datasets/LOLv2/Synthetic/Test' # path to validation data
+  SAVE_DIR: './checkpoints_walmafa'           # path to save models and images
