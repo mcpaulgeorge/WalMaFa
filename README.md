@@ -19,6 +19,9 @@ Junhao Tan, Songwen Pei
 ![](figures/network.png)
 
 The overview of the WalMaFa architecture. Our model consists of an Encoder-Latent-Decoder structure that uses wavelet-based WMB to adjust global brightness during the Encoder and Decoder, and Fourier-based FFAB to adjust local details during the Latent.
+
+## Module Design
+![](figures/module.png)
 ## Qualitative results
 ### Results on LOL datasets
 
