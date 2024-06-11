@@ -50,7 +50,7 @@ git clone https://github.com/mcpaulgeorge/WalMaFa.git
 
 ### Pretrained Model
 We provide the pre-trained models:
-- WalMaFa trained on LOL [[Google drive](https://drive.google.com/drive/folders/1J7NvvPsCtT0j8Rd9ombJ6sVIC6v0Xweb?usp=share_link) | [Baidu drive](https://pan.baidu.com/s/1j5KwGHWxMsaPwHP2u5Vj7A?pwd=5zyt)]
+- WalMaFa trained on LOL [[Google drive](https://drive.google.com/drive/folders/1wEVqm5Z9tKCLqN6SAEYwetQMk-ViCCSz?usp=sharing) | [Baidu drive](https://pan.baidu.com/s/1j5KwGHWxMsaPwHP2u5Vj7A?pwd=5zyt)]
 
 
 
