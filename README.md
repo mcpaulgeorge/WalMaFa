@@ -84,6 +84,15 @@ python train.py -yml_path your_config_path
 ```
 
 
+### Reference Repositories
+This implementation is based on / inspired by:
+- LLFormer: https://github.com/TaoWangzj/LLFormer
+- RetinexFormer: https://github.com/caiyuanhao1998/Retinexformer
+- SNR: https://github.com/dvlab-research/SNR-Aware-Low-Light-Enhance
+- IAT: https://github.com/cuiziteng/Illumination-Adaptive-Transformer
+
+---
+
 
 
 
