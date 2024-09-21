@@ -110,7 +110,6 @@ class LayerNorm(nn.Module):
         return to_4d(self.body(to_3d(x)), h, w)
 
 
-### Axis-based Multi-head Self-Attention
 
 class NextAttentionImplZ(nn.Module):
     def __init__(self, num_dims, num_heads, bias) -> None:
@@ -155,7 +154,6 @@ class NextAttentionImplZ(nn.Module):
         return res
 
 
-### Axis-based Multi-head Self-Attention (row and col attention)
 class NextAttentionZ(nn.Module):
     def __init__(self, num_dims, num_heads=1, bias=True) -> None:
         super().__init__()
@@ -179,7 +177,6 @@ class NextAttentionZ(nn.Module):
         return x
 
 
-###### Dual Gated Feed-Forward Network
 class FeedForward(nn.Module):
     def __init__(self, dim, ffn_expansion_factor, bias):
         super(FeedForward, self).__init__()
@@ -385,7 +382,7 @@ class Walmafa(nn.Module):
         self.patch_embed = OverlapPatchEmbed(inp_channels, dim)
         self.patch_embed_mask = OverlapPatchEmbed(1, dim)
 
-        self.latent = nn.Sequential(*[
+        self.sim = nn.Sequential(*[
             WMB(dim=int(dim), num_heads=heads[0], ffn_expansion_factor=ffn_expansion_factor,
                 bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[0])])
 
@@ -407,7 +404,7 @@ class Walmafa(nn.Module):
             WMB(dim=int(int(dim * 2 * 4)), num_heads=heads[3],
                 ffn_expansion_factor=ffn_expansion_factor, bias=bias,
                 LayerNorm_type=LayerNorm_type) for i in range(num_blocks[2])])
-        self.FFAB = blocks.FFAB(int(int(dim * 2 * 4)))
+        self.latent = blocks.FFAB(int(int(dim * 2 * 4)))
 
         self.up3_2 = Upsample(int(dim * 2 * 4))  # From Level 3 to Level 2
         self.decoder_level2_1 = nn.Sequential(*[
@@ -431,7 +428,7 @@ class Walmafa(nn.Module):
         self.skip_2_1 = nn.Conv2d(int(int(dim * 2)), int(int(dim * 2)), kernel_size=1, bias=bias)
         self.skip_1_0 = nn.Conv2d(int(int(dim * 2)), int(int(dim * 2)), kernel_size=1, bias=bias)
 
-        self.latent = nn.Sequential(*[
+        self.sim = nn.Sequential(*[
             WMB(dim=int(dim), num_heads=heads[0], ffn_expansion_factor=ffn_expansion_factor,
                 bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[0])])
 
@@ -452,7 +449,7 @@ class Walmafa(nn.Module):
         inp_enc_level3_0 = self.down_3(out_enc_level2_0)
         out_enc_level3_0 = self.decoder_level3_0(inp_enc_level3_0)
 
-        out_enc_level3_0 = self.FFAB(out_enc_level3_0)
+        out_enc_level3_0 = self.latent(out_enc_level3_0)
 
         out_enc_level3_0 = self.up3_2(out_enc_level3_0)
         inp_enc_level2_1 = self.coefficient_3_2[0, :][None, :, None, None] * out_enc_level2_0 + self.coefficient_3_2[1,
@@ -470,7 +467,7 @@ class Walmafa(nn.Module):
         inp_enc_level1_1 = self.skip_1_0(inp_enc_level1_1)  ### conv 1x1
         out_enc_level1_1 = self.decoder_level1_1(inp_enc_level1_1)
         out_enc_level1_1 = self.up2_0(out_enc_level1_1)
-        out_fusion_123 = self.latent(out_enc_level1_1)
+        out_fusion_123 = self.sim(out_enc_level1_1)
 
         out = self.coefficient_1_0[0, :][None, :, None, None] * out_fusion_123 + self.coefficient_1_0[1, :][None, :,
                                                                                  None, None] * out_enc_level1_1
