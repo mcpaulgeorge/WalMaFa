@@ -23,7 +23,7 @@ from matplotlib import pyplot as plt
 import time
 from visualizer import get_local
 get_local.activate() # 激活装饰器
-from model.four_wav import LLFormer
+from model import Walmafa
 parser = argparse.ArgumentParser(description='Demo Low-light Image Enhancement')
 parser.add_argument('--input_dir', default='./datasets/LOLv1/test/low', type=str, help='Input images')
 parser.add_argument('--result_dir', default='./results/v1_inverse/', type=str, help='Directory for results')
@@ -252,7 +252,7 @@ if len(files) == 0:
 
 # Load corresponding models architecture and weights
 writer = SummaryWriter("./logs")
-model = LLFormer(inp_channels=3,out_channels=3,dim = 16,num_blocks = [2,3,4],heads = [1,2,4,8],ffn_expansion_factor = 2.66,bias = False,LayerNorm_type = 'WithBias',attention=True,skip = False)
+model = Walmafa(inp_channels=3,out_channels=3,dim = 16,num_blocks = [2,3,4],heads = [1,2,4,8],ffn_expansion_factor = 2.66,bias = False,LayerNorm_type = 'WithBias',attention=True,skip = False)
 model.cuda()
 
 load_checkpoint(model, args.weights)
