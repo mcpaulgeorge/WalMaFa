@@ -23,7 +23,7 @@ from matplotlib import pyplot as plt
 import time
 from visualizer import get_local
 get_local.activate() # 激活装饰器
-from model import Walmafa
+from model.Walmafa import Walmafa
 parser = argparse.ArgumentParser(description='Demo Low-light Image Enhancement')
 parser.add_argument('--input_dir', default='./datasets/LOLv1/test/low', type=str, help='Input images')
 parser.add_argument('--result_dir', default='./results/v1_inverse/', type=str, help='Directory for results')
