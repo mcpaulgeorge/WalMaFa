@@ -100,7 +100,7 @@ If you find WalMaFa helpful, please cite our paper:
 @inproceedings{Tan2024WalMaFa,
   author  = {Junhao Tan and Songwen Pei and Wei Qin and Bo Fu and Ximing Li and Libo Huang},
   title   = {Wavelet-based Mamba with Fourier Adjustment for Low-light Image Enhancement},
-  journal = {Proceedings of the Asian Conference on Computer Vision (ACCV)},
+  booktitle = {Computer Vision -- ACCV 2024},
   year    = {2024},
 }
 ```
